@@ -1,0 +1,4 @@
+io/flutter/plugins/GeneratedPluginRegistrant.java
+ io.flutter.plugins.GeneratedPluginRegistrant
+com/example/nourish_my_soul/BuildConfig.java
+ com.example.nourish_my_soul.BuildConfig
