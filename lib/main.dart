@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-// test
+
 void main() {
-  runApp(MyApp());
+  runApp(NourishMySoul());
 }
 
-class MyApp extends StatelessWidget {
+class NourishMySoul extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -77,8 +77,9 @@ class _HomePageState extends State<HomePage> {
       ),
       body: SingleChildScrollView(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
+            _buildAddButton(),
             TableCalendar(
               events: _events,
               initialCalendarFormat: CalendarFormat.month,
@@ -138,11 +139,18 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
-        onPressed: _showAddDialog,
-      ),
     );
+  }
+
+  bool provider = false;
+
+  Widget _buildAddButton() {
+    return provider == true
+        ? ElevatedButton(
+      onPressed: _showAddDialog,
+      child: Icon(Icons.add),
+    )
+        : Container();
   }
 
   _showAddDialog() {
