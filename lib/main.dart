@@ -2,7 +2,8 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
+import 'package:mongo_dart/mongo_dart.dart' show Db, DbCollection;
+import 'dart:io' show Platform;
 
 void main() {
   runApp(NourishMySoul());
