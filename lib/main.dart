@@ -75,11 +75,14 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: Text('Calender'),
       ),
+      // build app view
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
+            // run build add button (appears at top of screen currently)
             _buildAddButton(),
+            // create new calendar from plugin TableCalendar
             TableCalendar(
               events: _events,
               initialCalendarFormat: CalendarFormat.month,
@@ -142,9 +145,12 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
+  // check to see if person has perms to add events (only providers, proof of concept)
   bool provider = false;
-
+  // since not everyone can add events, the add button only appears if the account
+  // is a provider account
   Widget _buildAddButton() {
+    // check if person is provider (if they are, build button and run _showAddDialog)
     return provider == true
         ? ElevatedButton(
       onPressed: _showAddDialog,
@@ -153,6 +159,7 @@ class _HomePageState extends State<HomePage> {
         : Container();
   }
 
+  // the code for what the add button actually does (called on press)
   _showAddDialog() {
     showDialog(
         context: context,
@@ -160,6 +167,8 @@ class _HomePageState extends State<HomePage> {
           content: TextField(
             controller: _eventController,
           ),
+          // create add button and create pop up that allows person to create
+          // new events (currently pre-fills nothing)
           actions: <Widget>[
             TextButton(
               child: Text("Save"),
@@ -183,4 +192,12 @@ class _HomePageState extends State<HomePage> {
         )
     );
   }
+}
+
+// create class user to allow for new user objects
+// constructors will get data from databases/registration
+class User {
+  // provider constructor
+  // volunteer constructor
+  // guest constructor (can't see anything, just login page)
 }
